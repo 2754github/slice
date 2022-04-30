@@ -137,4 +137,128 @@ func TestStringify(t *testing.T) {
 			}
 		})
 	}
+
+	intTests := []testCase[int]{
+		{
+			name: "nil",
+			args: args[int]{
+				slice:  nil,
+				sep:    ", ",
+				option: nil,
+			},
+			want: "",
+		},
+		{
+			name: "empty slice",
+			args: args[int]{
+				slice:  []int{},
+				sep:    ", ",
+				option: nil,
+			},
+			want: "",
+		},
+		{
+			name: "1 element/sep",
+			args: args[int]{
+				slice:  []int{1},
+				sep:    ", ",
+				option: nil,
+			},
+			want: "1",
+		},
+		{
+			name: "1 element/sep/quotation",
+			args: args[int]{
+				slice: []int{1},
+				sep:   ", ",
+				option: &StringifyOption{
+					Quotation: "`",
+				},
+			},
+			want: "`1`",
+		},
+		{
+			name: "1 element/sep/quotation/conjunction",
+			args: args[int]{
+				slice: []int{1},
+				sep:   ", ",
+				option: &StringifyOption{
+					Quotation:   "`",
+					Conjunction: "or",
+				},
+			},
+			want: "`1`",
+		},
+		{
+			name: "2 elements/sep",
+			args: args[int]{
+				slice:  []int{1, 2},
+				sep:    ", ",
+				option: nil,
+			},
+			want: "1, 2",
+		},
+		{
+			name: "2 elements/sep/quotation",
+			args: args[int]{
+				slice: []int{1, 2},
+				sep:   ", ",
+				option: &StringifyOption{
+					Quotation: "`",
+				},
+			},
+			want: "`1`, `2`",
+		},
+		{
+			name: "2 elements/sep/quotation/conjunction",
+			args: args[int]{
+				slice: []int{1, 2},
+				sep:   ", ",
+				option: &StringifyOption{
+					Quotation:   "`",
+					Conjunction: "or",
+				},
+			},
+			want: "`1` or `2`",
+		},
+		{
+			name: "3 elements/sep",
+			args: args[int]{
+				slice:  []int{1, 2, 3},
+				sep:    ", ",
+				option: nil,
+			},
+			want: "1, 2, 3",
+		},
+		{
+			name: "3 elements/sep/quotation",
+			args: args[int]{
+				slice: []int{1, 2, 3},
+				sep:   ", ",
+				option: &StringifyOption{
+					Quotation: "`",
+				},
+			},
+			want: "`1`, `2`, `3`",
+		},
+		{
+			name: "3 elements/sep/quotation/conjunction",
+			args: args[int]{
+				slice: []int{1, 2, 3},
+				sep:   ", ",
+				option: &StringifyOption{
+					Quotation:   "`",
+					Conjunction: "or",
+				},
+			},
+			want: "`1`, `2` or `3`",
+		},
+	}
+	for _, tt := range intTests {
+		t.Run("int/"+tt.name, func(t *testing.T) {
+			if got := Stringify(tt.args.slice, tt.args.sep, tt.args.option); got != tt.want {
+				t.Errorf("Stringify() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }
