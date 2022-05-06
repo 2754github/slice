@@ -1,6 +1,8 @@
 package slice
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestStringify(t *testing.T) {
 	type args[T comparable] struct {

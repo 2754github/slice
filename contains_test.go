@@ -17,7 +17,7 @@ func TestContains(t *testing.T) {
 
 	stringTests := []testCase[string]{
 		{
-			name: "uncontained/nil",
+			name: "nil",
 			args: args[string]{
 				slice:   nil,
 				element: "c",
@@ -25,7 +25,7 @@ func TestContains(t *testing.T) {
 			want: false,
 		},
 		{
-			name: "uncontained/empty slice",
+			name: "empty slice",
 			args: args[string]{
 				slice:   []string{},
 				element: "c",
@@ -59,7 +59,7 @@ func TestContains(t *testing.T) {
 
 	intTests := []testCase[int]{
 		{
-			name: "uncontained/nil",
+			name: "nil",
 			args: args[int]{
 				slice:   nil,
 				element: 3,
@@ -67,7 +67,7 @@ func TestContains(t *testing.T) {
 			want: false,
 		},
 		{
-			name: "uncontained/empty slice",
+			name: "empty slice",
 			args: args[int]{
 				slice:   []int{},
 				element: 3,

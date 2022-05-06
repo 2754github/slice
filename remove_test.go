@@ -18,7 +18,7 @@ func TestRemove(t *testing.T) {
 
 	stringTests := []testCase[string]{
 		{
-			name: "unremoved/nil",
+			name: "nil",
 			args: args[string]{
 				slice:   nil,
 				element: "c",
@@ -26,7 +26,7 @@ func TestRemove(t *testing.T) {
 			want: []string{},
 		},
 		{
-			name: "unremoved/empty slice",
+			name: "empty slice",
 			args: args[string]{
 				slice:   []string{},
 				element: "c",
@@ -60,7 +60,7 @@ func TestRemove(t *testing.T) {
 
 	intTests := []testCase[int]{
 		{
-			name: "unremoved/nil",
+			name: "nil",
 			args: args[int]{
 				slice:   nil,
 				element: 3,
@@ -68,7 +68,7 @@ func TestRemove(t *testing.T) {
 			want: []int{},
 		},
 		{
-			name: "unremoved/empty slice",
+			name: "empty slice",
 			args: args[int]{
 				slice:   []int{},
 				element: 3,
